@@ -1,0 +1,24 @@
+# Python bytecode and test/tool caches
+__pycache__/
+
+# Local Python environments
+avg_env/
+.venv/
+venv/
+env/
+
+# Training outputs and serialized models
+avg_v2_s*/
+*.pt
+
+# Run logs and generated evaluation data
+*.log
+heldout_*.csv
+evaluation_*.csv
+
+# Rendered recordings and other generated media
+videos/
+recordings/
+
+smoke_test_env.py
+inspect_checkpoints.py
