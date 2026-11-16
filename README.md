@@ -37,13 +37,14 @@ Each seed has intermediate checkpoints that survive most of a 1,000-step episode
 
 ![Training curves](Media/training_curves.png)
 
-**Question**
-- not quite sure why the collapse happens, policy norm, or something to do with my parameters?
-- so does this mean length of training doesn't matter if it doesn't seem to be using that info?
-- why do the outputs of the seed differ so much even though its exactly the same hyperparameters and rewards and all, doesn't that mean results are not reproducible?
+**Open Questions**
+- What triggers the collapses? Episode length falls from hundreds of steps to near zero within a few thousand steps, then recovers (7 events in seed 1, 2 in seed 0, 1 in seed 2). 
+- Does longer training help? The best checkpoints appeared at 2.25M, 4.25M and 4.75M steps depending on the seed, and neighbouring checkpoints can be much worse. 
+<!-- Would step-size decay or early stopping help for incremental RL? -->
+- How much seed variance is typical? T
 
 **Notes**
-- I don't have a direct comparism between the 2 yet(rewards, processing)
+- I don't have a direct comparism between the 2 methods yet. that is, one where they have the exact same rewards and conditions.
 
 ### Instability
 
