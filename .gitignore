@@ -13,7 +13,4 @@ heldout_*.csv
 evaluation_*.csv
 
 # scripts
-smoke_test_env.py
-inspect_checkpoints.py
-record_videos.py
-watch_avg.py
+Other_scripts/
