@@ -33,7 +33,7 @@ Each seed has intermediate checkpoints that survive most of a 1,000-step episode
 |---|---|---|---|
 | First 6M-step runs (original reward) | AVG stood still, earning about 4.85 reward per step with forward speed near 0 | The 5.0 alive bonus dwarfs `1.25·vx` (1.0 at 0.8 m/s), so surviving is worth more than walking | Alive bonus 1.0 and a capped velocity reward |
 | Same runs, evaluation | Seed 2 trained to 1,000-step episodes yet evaluated at 14 steps | mistake in evaluation script skipped the actor's penultimate-layer L2 normalization(it was sending unscaled features into the final layer) and did not clip actions as in training | included the scaling line and also the clipping |
-| Revised runs | Hopping,then falling, in the first 1–2M steps. Robot gets walking-like gaits, and somehow unlearns it at some later step and collapes | I'm attributing this to normal Early-training model behaviour. |
+| Revised runs | Hopping,then falling, in the first 1–2M steps. Robot gets walking-like gaits, and somehow unlearns it at some later step and collapes | I'm attributing the initial gait(seed 1) to normal Early-training model behaviour. |
 
 ![Training curves](Media/training_curves.png)
 
@@ -48,7 +48,7 @@ Each seed has intermediate checkpoints that survive most of a 1,000-step episode
 
 ### Instability
 
-Under the revised reward, rolling episode length drops from several hundred to near zero within a few thousand steps. By a simple threshold (rolling length falling below 100 after exceeding 300), seed 0 had 2 such events, seed 1 had 7 (each recovering in 50–80K steps), and seed 2 had 1 (about 1.7M steps to recover). Evaluating consecutive 250K-step checkpoints shows the same pattern: deterministic episode length swings between 7 and 1,000.
+Under the revised reward, rolling episode length drops from several hundred to near zero within a few thousand steps. By a simple threshold (rolling length falling below 100 after exceeding 300), seed 0 had 2 such events, seed 1 had 7 (each recovering in 50–80K steps), and seed 2 had 1 (about 1.7M steps to recover). Evaluating consecutive 250K-step checkpoints shows the same pattern, which is that deterministic episode length swings between 7 and 1,000.
 
 ![Seed 0 checkpoints](figures/summary_seed0.png)
 ![Seed 1 checkpoints](figures/summary_seed1.png)
